@@ -270,7 +270,12 @@ class RGBFiles(MonocularDataset):
         super().__init__()
         self.use_calibration = False
         self.dataset_path = pathlib.Path(dataset_path)
-        self.rgb_files = natsorted(list((self.dataset_path).glob("*.png")))
+        # self.rgb_files = natsorted(list((self.dataset_path).glob("*.png")))
+        # 同时匹配 .jpg、.jpeg 和 .png 格式的文件
+        self.rgb_files = []
+        for ext in ('*.jpg', '*.jpeg', '*.png'):
+            self.rgb_files.extend(natsorted(list(self.dataset_path.glob(ext))))
+        print(f"Loaded {len(self.rgb_files)} RGB files from {dataset_path}")
         self.timestamps = np.arange(0, len(self.rgb_files)).astype(self.dtype) / 30.0
 
 

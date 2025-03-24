@@ -38,9 +38,9 @@ def process_images(folder_path, output_folder):
 if __name__ == "__main__":
     # 输入文件夹路径
     # folder_path = '/home/narwal/mast3r-slam/MASt3R-SLAM/Narwal/datasets/84759'
-    folder_path = '/home/narwal/MASt3R-SLAM/datasets/Narwal/84846'
+    folder_path = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604/left'
     # 输出文件夹路径
     # output_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/Narwal/datasets/84759_new'
-    output_folder = '/home/narwal/MASt3R-SLAM/datasets/Narwal/84846_new'
+    output_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604_new'
     process_images(folder_path, output_folder)
 
