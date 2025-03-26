@@ -124,11 +124,13 @@ class FactorGraph:
         n_unique_kf = unique_kf_idx.numel()
         if n_unique_kf <= pin:
             return
+        # print(f"unique_kf_idx: {unique_kf_idx}")
 
         Xs, T_WCs, Cs = self.get_poses_points(unique_kf_idx)
+        # print(f"Xs: {Xs}")
 
         ii, jj, idx_ii2jj, valid_match, Q_ii2jj = self.prep_two_way_edges()
-
+        # print(f"ii: {ii}")
         C_thresh = self.cfg["C_conf"]
         Q_thresh = self.cfg["Q_conf"]
         max_iter = self.cfg["max_iters"]
@@ -137,6 +139,8 @@ class FactorGraph:
         delta_thresh = self.cfg["delta_norm"]
 
         pose_data = T_WCs.data[:, 0, :]
+        # print(f"T_WCs: {T_WCs}")
+        # print(f"pose_data: {pose_data}")
         mast3r_slam_backends.gauss_newton_rays(
             pose_data,
             Xs,

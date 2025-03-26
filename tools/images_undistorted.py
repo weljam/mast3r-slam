@@ -26,8 +26,8 @@ dist_coeffs = np.array([
 ])
 
 # 输入和输出文件夹路径
-input_folder = '/home/narwal/MASt3R-SLAM/datasets/Narwal/84846'  # 替换为实际的输入文件夹路径
-output_folder = '/home/narwal/MASt3R-SLAM/datasets/Narwal/84846_undistorted'  # 替换为实际的输出文件夹路径
+input_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604'  # 替换为实际的输入文件夹路径
+output_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604_undistorted'  # 替换为实际的输出文件夹路径
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
@@ -40,6 +40,15 @@ for image_file in image_files:
     img = cv2.imread(os.path.join(input_folder, image_file))
     
     undistorted_img = cv2.undistort(img, camera_matrix, dist_coeffs)
+    # # 读取图片
+    # img = cv2.imread(os.path.join(input_folder, image_file))
+    # h, w = img.shape[:2]
+
+    # # 计算去畸变映射，直接使用原始相机内参矩阵K
+    # map1, map2 = cv2.initUndistortRectifyMap(camera_matrix, dist_coeffs, None, camera_matrix, (w, h), cv2.CV_32FC1)
+
+    # # 应用去畸变映射
+    # undistorted_img = cv2.remap(img, map1, map2, cv2.INTER_LINEAR)
     
     # 保存去畸变后的图像
     cv2.imwrite(os.path.join(output_folder, image_file), undistorted_img)

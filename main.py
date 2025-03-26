@@ -250,7 +250,7 @@ if __name__ == "__main__":
             states.set_mode(Mode.TERMINATED)
             break
 
-        timestamp, img = dataset[i]
+        timestamp, img ,img_name = dataset[i]
         if save_frames:
             frames.append(img)
 
@@ -276,6 +276,7 @@ if __name__ == "__main__":
         if mode == Mode.TRACKING:
             add_new_kf, match_info, try_reloc = tracker.track(frame)
             if try_reloc:
+                print(f"Lost tracking, frame: {img_name}")
                 states.set_mode(Mode.RELOC)
             states.set_frame(frame)
 

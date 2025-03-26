@@ -54,6 +54,8 @@ class FrameTracker:
         Xf, Xk, T_WCf, T_WCk, Cf, Ck, meas_k, valid_meas_k = self.get_points_poses(
             frame, keyframe, idx_f2k, img_size, use_calib, K
         )
+        # print(f"T_WCf: {T_WCf}")
+        # print(f"T_WCk: {T_WCk}")
 
         # Get valid
         # Use canonical confidence average

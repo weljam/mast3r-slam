@@ -25,7 +25,9 @@ def process_images(folder_path, output_folder):
                     top = (height - new_height) // 2
                     right = left + new_width
                     bottom = top + new_height
-
+                    ## 裁剪后的内参变化,焦距不变，主点变了，若是缩放，则内参和主点同时缩放 ##
+                    # K =[fx，0, cx -left, 0, fy, cy-top, 0, 0, 1]
+                    print(f"left={left}, top={top}, right={right}, bottom={bottom}")
                     # 裁剪图像
                     cropped_img = img.crop((left, top, right, bottom))
 
@@ -38,7 +40,7 @@ def process_images(folder_path, output_folder):
 if __name__ == "__main__":
     # 输入文件夹路径
     # folder_path = '/home/narwal/mast3r-slam/MASt3R-SLAM/Narwal/datasets/84759'
-    folder_path = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604/left'
+    folder_path = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604'
     # 输出文件夹路径
     # output_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/Narwal/datasets/84759_new'
     output_folder = '/home/narwal/mast3r-slam/MASt3R-SLAM/datasets/Narwal/84604_new'

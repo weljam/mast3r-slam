@@ -1,5 +1,5 @@
 use_calib: False
-single_thread: False
+single_thread: Ture   # True for single thread
 dataset:
   subsample: 1
   img_downsample: 1
@@ -14,7 +14,7 @@ matching:
   dilation_max: 5 # Right now starts from max and iteratively decreases until 1
 
 tracking:
-  min_match_frac: 0.05
+  min_match_frac: 0.03  #0.05
   max_iters: 50
   C_conf: 0.0
   Q_conf: 1.5
